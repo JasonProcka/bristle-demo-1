@@ -2,13 +2,26 @@ import React, { Component } from 'react'
 import './App.css'
 // containers
 import Demo from './containers/Demo'
+import Home from './containers/Home'
 
 class App extends Component {
   constructor() {
     super()
 
     this.state = {
-      demoInProgress: true,
+      demoInProgress: false,
+    }
+
+    // bindings
+
+    this.triggerDemo = this.triggerDemo.bind(this)
+  }
+
+  triggerDemo() {
+    if (this.state.demoInProgress) {
+      return null
+    } else {
+      this.setState({ demoInProgress: true })
     }
   }
 
@@ -20,7 +33,7 @@ class App extends Component {
           <Demo />
         </div>
         )) : ( 
-        <div>demo not in progress</div> 
+        <Home triggerDemo={this.triggerDemo}/>
         )}
       </div>
     )
