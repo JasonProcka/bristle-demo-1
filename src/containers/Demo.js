@@ -16,6 +16,11 @@ class Demo extends Component {
 		this.state = {
 			currentSlide: 0, // Starts at intro
 		}
+
+		// bindings
+
+		this.progressSlide = this.progressSlide.bind(this)
+		this.regressSlide = this.regressSlide.bind(this)
 	}
 
 	renderSlide(state) {
@@ -32,23 +37,53 @@ class Demo extends Component {
           return (
           	<div>second slide</div>
           );
+        case 3:
+        	return (
+        		<div>third slide</div>
+        	)	
+        case 4:
+          return (
+          	<div>fourth slide</div>
+          );
+        case 5:
+          return (
+          	<div>fifth slide</div>
+          );
+        case 6:
+          return (
+          	<div>sixth slide</div>
+          );
         default:
           return null;
     }
   }
 
 	progressSlide() {
-    return null
+		const previousState = this.state.currentSlide
+
+    if (this.state.currentSlide > 5) {
+    	return null
+    } else {
+    	this.setState({ currentSlide: previousState + 1 })
+    }
   }
 
   regressSlide() {
-    return null
+    const previousState = this.state.currentSlide
+
+    if (this.state.currentSlide < 1) {
+    	return null
+    } else {
+    	this.setState({ currentSlide: previousState - 1 })
+    }
   }
 
 	render() {
 		return (
 			<div className="demo__container">
-				{ this.renderSlide(this.state.currentSlide) } 
+				{ this.renderSlide(this.state.currentSlide) }
+				<button onClick={this.regressSlide}>Back</button>
+				<button onClick={this.progressSlide}>Next</button>
 			</div>
 		)
 	}

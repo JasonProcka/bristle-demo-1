@@ -4,7 +4,7 @@ class Slide4 extends Component {
 	render() {
 		return (
 			<div>
-				Slide
+				Slide 4
 			</div>
 		)
 	}

@@ -4,7 +4,7 @@ class Intro extends Component {
 	render() {
 		return (
 			<div>
-				Slide
+				This is the intro
 			</div>
 		)
 	}
